@@ -1,6 +1,6 @@
 export default {
     outputPath:'www',
-    // history: 'hash',
+    history: 'hash',
     base: './',
     publicPath:'./'
 };
