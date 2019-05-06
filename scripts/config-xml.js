@@ -25,7 +25,13 @@ const changeConfigXml = () => {
   if (env === ENV.debug) {
     const navPattern = `(<allow-navigation .*)href="[^"]*"(.*/>)`;
     const navRegex = new RegExp(navPattern);
-    content = content.replace(navRegex, `$1href="${webUrl}"$2`);
+    if (navRegex.test(content)) {
+      content = content.replace(navRegex, `$1href="${webUrl}"$2`);
+    } else {
+      const widgePattern = `</widget>`;
+      const widgeRegex = new RegExp(widgePattern);
+      content = content.replace(widgeRegex, `\t<allow-navigation href="${webUrl}" />\n</widget>`);
+    }
   }
   // console.log(content);
   fs.writeFileSync(configPath, content);
