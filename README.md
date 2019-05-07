@@ -2,11 +2,13 @@
 
 ## 安装环境（Mac）
 1.安装XCode
+
 2.安装xcode-select
 ```sh
 $ xcode-select --install
 ```
 弹出软件一直下一步就好。
+
 3.安装ios-deploy
 ```sh
 $ sudo yarn global add ios-deploy
@@ -16,7 +18,7 @@ $ sudo yarn global add ios-deploy
 $ sudo yarn global add cordova
 ```
 ## 新建项目
-正常的新建umi项目
+正常的新建[umi](https://umijs.org/)或者[alita](https://alitajs.com/)项目
 
 ## 添加umi-plugin-cordova插件
 ```sh
@@ -32,8 +34,9 @@ export default {
 ```
 
 ## 添加cordova初始化命令
-如果你全局安装了umi，可以使用umi cordova --init --ios
-如果你没有全局安装umi，可以在package.json里面添加scripts
+如果你全局安装了 `umi` ，可以使用`umi cordova --init --ios`
+
+如果你没有全局安装 `umi` ，可以在 `package.json` 里面添加 `scripts`
 
 ```json
 {
@@ -54,12 +57,12 @@ export default {
 | --android | 执行cordova platforms add android |
 
 ## 启动项目
-开发环境执行umi dev
-dev环境有热更新，如果使用手机查看，要求需要在统一个网络环境下。
+开发环境执行 `umi dev`
+dev 环境有热更新，如果使用手机查看，要求需要在统一个网络环境下。
 
-编译执行umi build
+编译执行`umi build`
 
-使用xcode打开项目 `./platforms/ios/Tutorial.xcworkspace`
+使用**xcode**打开项目 `./platforms/ios/Tutorial.xcworkspace`
 选择虚拟机，执行。
 
 虚拟机中查看效果
