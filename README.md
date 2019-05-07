@@ -45,6 +45,8 @@ export default {
     "cordova-add-ios":"umi cordova --ios",
     "cordova-add-android":"umi cordova --android",
     "start":"umi dev",
+    "start-cordova-android":"CORDOVA=android umi dev",
+    "build-cordova-android":"CORDOVA=android umi build",
     "build":"umi build",
   },
 }
@@ -55,6 +57,11 @@ export default {
 | --init | 初始化Cordova项目，添加配置文件和相关文件夹 |
 | --ios | 执行cordova platforms add ios |
 | --android | 执行cordova platforms add android |
+
+### 环境变量 CORDOVA
+默认使用的平台是ios，如果开发安卓，需要设置环境变量
+
+如果`umi cordova --init --ios` 一直没有动静，可以`ctrl+c`关闭进程，手动执行`cordova platforms add ios`
 
 ## 启动项目
 开发环境执行 `umi dev`
