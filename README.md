@@ -16,60 +16,51 @@ $ sudo yarn global add ios-deploy
 $ sudo yarn global add cordova
 ```
 ## 新建项目
-1.使用cordova初始化项目
-```sh
-$ cordova create tutorial com.example.tutorial Tutorial
-```
-2.添加ios平台
-```sh
-$ cordova platforms add ios
-```
-## 添加umi项目
-1.新建src/pages/index/index.js
-```js
-import styles from './index.css';
+正常的新建umi项目
 
-export default function() {
-  return (
-    <div className={styles.normal}>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li><a href="https://umijs.org/guide/getting-started.html">Getting Started</a></li>
-      </ul>
-    </div>
-  );
-}
+## 添加umi-plugin-cordova插件
+```sh
+$ yarn add umi-plugin-cordova
 ```
-2.新建src/pages/index/index.css
-略
-3.新建config/config.js
 ```js
+// .umirc.js
 export default {
-    outputPath:'www', // build到www目录，cordova会被这个目录拷贝到项目工程
-    history: 'hash',
-    base: './',
-    publicPath:'./' // cordova使用文件协议访问
+  plugins: [
+    ['umi-plugin-cordova']
+  ],
 };
 ```
-4.安装umi
-```sh
-$ yarn add umi
-```
-5.添加启动命令package.json
+
+## 添加cordova初始化命令
+如果你全局安装了umi，可以使用umi cordova --init --ios
+如果你没有全局安装umi，可以在package.json里面添加scripts
+
 ```json
-"scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "umi dev",
-    "build": "umi build && cordova build ios"
-},
+{
+  "scripts": {
+    "cordova-init":"umi cordova --init",
+    "cordova-add-ios":"umi cordova --ios",
+    "cordova-add-android":"umi cordova --android",
+    "start":"umi dev",
+    "build":"umi build",
+  },
+}
 ```
-6.执行编译
-```sh
-$ npm run build
-```
-7.使用xcode打开项目 `./platforms/ios/Tutorial.xcworkspace`
+
+| 参数 | 说明 |
+|  :-  | :-:  |
+| --init | 初始化Cordova项目，添加配置文件和相关文件夹 |
+| --ios | 执行cordova platforms add ios |
+| --android | 执行cordova platforms add android |
+
+## 启动项目
+开发环境执行umi dev
+dev环境有热更新，如果使用手机查看，要求需要在统一个网络环境下。
+
+编译执行umi build
+
+使用xcode打开项目 `./platforms/ios/Tutorial.xcworkspace`
 选择虚拟机，执行。
 
-8.虚拟机中查看效果
+虚拟机中查看效果
 ![](./umi-cordova.png)
